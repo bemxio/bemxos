@@ -81,7 +81,7 @@ void process_key(u8 code, bool state) {
             break;
         
         default:
-            if (state) { // key up
+            if (state || strlen(buffer) >= 63) { // key up or buffer too big
                 break;
             }
 
