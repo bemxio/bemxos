@@ -1,7 +1,7 @@
 #include "../drivers/screen.h"
 #include "../kernel/utilities.h"
 
-#include "../drivers/ports.h"
+#include "ports.h"
 #include "isr.h"
 #include "idt.h"
 
@@ -150,4 +150,10 @@ void irq_handler(registers_t registers) {
 
         handler(registers);
     }
+}
+
+void irq_install() {
+    asm volatile("sti"); // enable interrupts
+
+    init_keyboard(); // 
 }

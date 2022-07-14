@@ -3,7 +3,7 @@
 
 #include "keyboard.h"
 #include "screen.h"
-#include "ports.h"
+#include "../cpu/ports.h"
 
 #include <stdbool.h>
 
