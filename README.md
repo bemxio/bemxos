@@ -24,7 +24,7 @@ You will need some prerequisites before you start compiling the system:
 
 1. Export some global environment variables:
     - `CC_PATH`, that points to the directory path of your cross-compiler.
-    - (optionally) `QEMU_PATH`, that points to the QEMU directory. (for Windows peeps, install QEMU on Windows and point to it in WSL, where `/mnt\/c/` is `C:\`)
+    - (optionally) `QEMU_PATH`, that points to the QEMU directory. (for Windows peeps, install QEMU on Windows and point to it in WSL, where `/mnt/c/` is `C:\`)
     - (optionally) `GDB_PATH`, that points to the GDB **executable**. (for Windows peeps, it's the same as with QEMU)
 
 2. Clone the repository using `git`, and use `cd` to change the current directory.
