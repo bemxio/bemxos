@@ -3,7 +3,7 @@
 
 void main() {
     isr_install();
-    asm volatile("sti");
+    irq_install();
 
     kclear();
     
