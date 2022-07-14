@@ -155,5 +155,5 @@ void irq_handler(registers_t registers) {
 void irq_install() {
     asm volatile("sti"); // enable interrupts
 
-    init_keyboard(); // 
+    init_keyboard();
 }
