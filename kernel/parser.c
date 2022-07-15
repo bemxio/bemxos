@@ -2,21 +2,18 @@
 #include "../stdlib/string.h"
 #include "parser.h"
 
-/*
-// frees a `tokenized_string` struct and its subsequent member pointers
+/// frees a `tokenized_string` struct and its subsequent member pointers
 void free_tokenized_string(struct tokenized_string *tsp) {
-    free(tsp->str);
-    free(tsp->indices);
-    free(tsp);
+//     free(tsp->str);
+//     free(tsp->indices);
+//     free(tsp);
+    /* ^ not yet implemented */
 }
 
-// frees the subsequent pointers of a `tokenized_string` struct
-void free_tokenized_string(struct tokenized_string tsv) {
-    free(tsv.str);
-    free(tsv.indices);
-}
-*/
-
+/// Instantiates a `tokenized_string` with the string passed to it.
+/// The string passed to this factory function is a RHS string that
+/// is copied within the function. The `str` member of `tokenized_string`
+/// is the copied string.
 struct tokenized_string *tokenize_string(const char *source_str) {
     char *str = (char *)malloc(strlen(source_str) + 1, 1, NULL);
     
