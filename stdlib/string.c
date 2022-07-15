@@ -41,6 +41,17 @@ void itoa(int value, char string[]) {
     strrev(string);
 }
 
+char* strcpy(char *to, const char *from) {
+    char *save = to;
+
+    while ((*to = *from) != '\0') {
+        ++from;
+        ++to;
+    }
+
+    return save;
+}
+
 bool chrstr(char character, char *string) {
     for (int i = 0; i < strlen(string); i++) {
         if (string[i] == character) {
