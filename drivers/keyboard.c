@@ -87,7 +87,7 @@ void process_key(u8 code, bool state) {
 
             key = bindings[code][0];
 
-            if (!capitalized && chrstr(key, capitalizable)) {
+            if (!capitalized && chrinstr(key, capitalizable)) {
                 key += 32;
             }
 

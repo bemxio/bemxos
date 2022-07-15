@@ -1,5 +1,6 @@
 #include "string.h"
 
+// functions present in the original stdlib
 int strlen(char string[]) {
     int length = 0;
 
@@ -52,7 +53,8 @@ char* strcpy(char *to, const char *from) {
     return save;
 }
 
-bool chrstr(char character, char *string) {
+// my AWESOME and COOL functions (very cool and awesome)
+bool chrinstr(char character, char *string) {
     for (int i = 0; i < strlen(string); i++) {
         if (string[i] == character) {
             return true;
