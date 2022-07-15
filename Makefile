@@ -1,5 +1,5 @@
-SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c)
-HEADERS = $(wildcard kernel/*.h drivers/*.h cpu/*.h)
+SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c stdlib/*.c)
+HEADERS = $(wildcard kernel/*.h drivers/*.h cpu/*.h stdlib/*.c)
 OBJECTS = ${SOURCES:.c=.o cpu/interrupt.o}
 
 bemxOS.bin: boot/bootloader.bin kernel.bin

@@ -1,6 +1,7 @@
-#include "screen.h"
 #include "../cpu/ports.h"
-#include "../kernel/utilities.h"
+#include "../stdlib/memory.h"
+#include "screen.h"
+
 
 // cursor offset stuff
 int get_cursor_offset() {
@@ -59,9 +60,9 @@ int kprint_char(char character, int column, int row, char attributes) {
 
     if (offset >= MAX_ROWS * MAX_COLUMNS * 2) {
         for (int i = 1; i < MAX_ROWS; i++) {
-            memory_copy(
-                get_offset(0, i) + VIDEO_ADDRESS,
+            memcpy(
                 get_offset(0, i - 1) + VIDEO_ADDRESS,
+                get_offset(0, i) + VIDEO_ADDRESS,
                 MAX_COLUMNS * 2
             );
         }

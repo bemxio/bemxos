@@ -1,7 +1,7 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-#include "../cpu/types.h"
+#include "../stdlib/types.h"
 
 // binding for scancodes
 char *bindings[] = {

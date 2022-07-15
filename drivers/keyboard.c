@@ -1,11 +1,11 @@
+#include "../cpu/ports.h"
 #include "../cpu/isr.h"
-#include "../kernel/utilities.h"
+
+#include "../stdlib/boolean.h"
+#include "../stdlib/string.h"
 
 #include "keyboard.h"
 #include "screen.h"
-#include "../cpu/ports.h"
-
-#include <stdbool.h>
 
 bool capitalized = false;
 char buffer[64] = {};
@@ -87,7 +87,7 @@ void process_key(u8 code, bool state) {
 
             key = bindings[code][0];
 
-            if (!capitalized && charinstr(key, capitalizable)) {
+            if (!capitalized && chrstr(key, capitalizable)) {
                 key += 32;
             }
 
