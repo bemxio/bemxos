@@ -1,8 +1,8 @@
-; Defined in isr.c
+; defined in isr.c
 [extern isr_handler]
 [extern irq_handler]
 
-; Common ISR code
+; common ISR code
 isr_common_stub:
 	pusha ; pushes edi, esi, ebp, esp, ebx, edx, ecx & eax
 	mov ax, ds ; lower 16-bits of eax = ds

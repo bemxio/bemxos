@@ -6,7 +6,7 @@
 // this container stores a string split up by whitespace and quotation bodies
 struct tokenized_string {
     char* str; // points to the internal tokenized string
-    char** indices; // Points to an array of `size` `char *`s, all of which point to the beginning of each subsequent token
+    char** indices; // points to an array of `size` `char *`s, all of which point to the beginning of each subsequent token
     size_t size; // the size index of the indices array (the byte size is calculated as `size * sizeof *indices`)
 };
 
