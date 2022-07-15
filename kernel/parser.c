@@ -2,21 +2,6 @@
 #include "../stdlib/string.h"
 #include "parser.h"
 
-/*
-// frees a `tokenized_string` struct and its subsequent member pointers
-void free_tokenized_string(struct tokenized_string *tsp) {
-    free(tsp->str);
-    free(tsp->indices);
-    free(tsp);
-}
-
-// frees the subsequent pointers of a `tokenized_string` struct
-void free_tokenized_string(struct tokenized_string tsv) {
-    free(tsv.str);
-    free(tsv.indices);
-}
-*/
-
 struct tokenized_string *tokenize_string(const char *source_str) {
     char *str = (char *)malloc(strlen(source_str) + 1, 1, NULL);
     
