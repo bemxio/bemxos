@@ -6,17 +6,17 @@ void memcpy(char *destination, char *source, int amount) {
     }
 }
 
-void memset(u8 *destination, u8 value, u32 amount) {
-    for (u8 *temporary = (u8 *)destination; amount != 0; amount--) {
+void memset(uint8_t *destination, uint8_t value, uint32_t amount) {
+    for (uint8_t *temporary = (uint8_t *)destination; amount != 0; amount--) {
         *temporary++ = value;
     }
 }
 
 // this should be computed at link time, but a hardcoded value is fine for now
 // remember that the kernel starts at 0x1000 as defined in the Makefile
-u32 free_memory_address = 0x10000;
+uint32_t free_memory_address = 0x10000;
 
-u32 malloc(u32 size, int align, u32 *physical_address) { // the implementation is just a pointer to some free memory which keeps growing
+uint32_t malloc(uint32_t size, int align, uint32_t *physical_address) { // the implementation is just a pointer to some free memory which keeps growing
     // pages are aligned to 4K, or 0x1000
     if (align == 1 && (free_memory_address & 0xFFFFF000)) {
         free_memory_address &= 0xFFFFF000;
@@ -28,7 +28,7 @@ u32 malloc(u32 size, int align, u32 *physical_address) { // the implementation i
         *physical_address = free_memory_address;
     }
 
-    u32 ret = free_memory_address;
+    uint32_t ret = free_memory_address;
     free_memory_address += size; // remember to increment the pointer
 
     return ret;

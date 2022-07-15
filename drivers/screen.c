@@ -2,7 +2,6 @@
 #include "../stdlib/memory.h"
 #include "screen.h"
 
-
 // cursor offset stuff
 int get_cursor_offset() {
     port_byte_out(REG_SCREEN_CONTROL, 14);

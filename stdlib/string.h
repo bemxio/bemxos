@@ -1,7 +1,7 @@
 #ifndef STRING_H
 #define STRING_H
 
-#include "boolean.h"
+#include <stdbool.h>
 
 int strlen(char string[]);
 void strrev(char string[]);

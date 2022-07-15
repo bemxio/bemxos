@@ -1,8 +1,8 @@
 #include "../cpu/ports.h"
 #include "../cpu/isr.h"
 
-#include "../stdlib/boolean.h"
 #include "../stdlib/string.h"
+#include <stdbool.h>
 
 #include "keyboard.h"
 #include "screen.h"
@@ -11,7 +11,7 @@ bool capitalized = false;
 char buffer[64] = {};
 
 static void keyboard_callback(registers_t registers) {
-    u8 code = port_byte_in(0x60); // the PIC leaves us the scancode in port 0x60
+    uint8_t code = port_byte_in(0x60); // the PIC leaves us the scancode in port 0x60
 
     if (code >= 128) { // 'keyup' event corresponds to the 'keydown' + 0x80 
         process_key(code - 128, true);
@@ -22,7 +22,7 @@ static void keyboard_callback(registers_t registers) {
 
 /*
 static void test_keyboard_callback(registers_t registers) {
-    u8 code = port_byte_in(0x60);
+    uint8_t code = port_byte_in(0x60);
     
     if (code >= 128) {
         code -= 128;
@@ -47,7 +47,7 @@ void init_keyboard() {
 
 void handle_input(); // TODO: handle input
 
-void process_key(u8 code, bool state) {
+void process_key(uint8_t code, bool state) {
     int length;
     char key;
 
