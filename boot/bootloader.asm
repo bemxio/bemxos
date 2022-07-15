@@ -49,5 +49,5 @@ MSG_LOAD_KERNEL db "Loading kernel into memory...", 0
 BOOT_DRIVE db 0
 
 ; padding & magic number
-times 510-($-$$) db 0
+times 510 - ($ - $$) db 0
 dw 0xaa55

@@ -24,7 +24,6 @@ isr_common_stub:
 	
     popa
 	add esp, 8 ; cleans up the pushed error code and pushed ISR number
-	sti
 	iret ; pops 5 things at once: CS, EIP, EFLAGS, SS, and ESP
 
 ; identical to ISR code except for the 'call' and the 'pop ebx'
