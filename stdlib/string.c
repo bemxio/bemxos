@@ -63,3 +63,13 @@ bool chrinstr(char character, char *string) {
 
     return false;
 }
+
+int strint(char *string) {
+    int number = 0;
+
+    for (int multiplier = 1, i = strlen(string) - 1; i >= 0; multiplier *= 10, i--) {
+        number += (string[i] - 48) * multiplier; // 48 is the ASCII code for '0'
+    }
+
+    return number;
+}
