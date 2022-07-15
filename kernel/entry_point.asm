@@ -1,5 +1,5 @@
 [bits 32]
-[extern main] ; define the calling point
+[extern kernel_main] ; define the calling point
 
-call main ; calls the C function (we finally don't need to touch assembly)
+call kernel_main ; calls the C function (we finally don't need to touch assembly)
 jmp $
