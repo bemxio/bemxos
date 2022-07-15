@@ -14,6 +14,7 @@ isr_common_stub:
 	mov fs, ax
 	mov gs, ax
 	
+    cld
 	call isr_handler
 	
 	pop eax 
