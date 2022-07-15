@@ -106,8 +106,6 @@ global irq15
 
 ; 0: Divide By Zero Exception
 isr0:
-    cli
-
     push byte 0
     push byte 0
     
@@ -115,8 +113,6 @@ isr0:
 
 ; 1: Debug Exception
 isr1:
-    cli
-    
     push byte 0
     push byte 1
     
@@ -124,8 +120,6 @@ isr1:
 
 ; 2: Non Maskable Interrupt Exception
 isr2:
-    cli
-    
     push byte 0
     push byte 2
     
@@ -133,8 +127,6 @@ isr2:
 
 ; 3: Int 3 Exception
 isr3:
-    cli
-    
     push byte 0
     push byte 3
     
@@ -142,8 +134,6 @@ isr3:
 
 ; 4: INTO Exception
 isr4:
-    cli
-    
     push byte 0
     push byte 4
     
@@ -151,8 +141,6 @@ isr4:
 
 ; 5: Out of Bounds Exception
 isr5:
-    cli
-    
     push byte 0
     push byte 5
     
@@ -160,8 +148,6 @@ isr5:
 
 ; 6: Invalid Opcode Exception
 isr6:
-    cli
-    
     push byte 0
     push byte 6
     
@@ -169,8 +155,6 @@ isr6:
 
 ; 7: Coprocessor Not Available Exception
 isr7:
-    cli
-    
     push byte 0
     push byte 7
     
@@ -178,14 +162,11 @@ isr7:
 
 ; 8: Double Fault Exception (with an error code!)
 isr8:
-    cli
     push byte 8
     jmp isr_common_stub
 
 ; 9: Coprocessor Segment Overrun Exception
 isr9:
-    cli
-    
     push byte 0
     push byte 9
     
@@ -193,38 +174,31 @@ isr9:
 
 ; 10: Bad TSS Exception (with an error code)
 isr10:
-    cli
     push byte 10
     jmp isr_common_stub
 
 ; 11: Segment Not Present Exception (with an error code)
 isr11:
-    cli
     push byte 11
     jmp isr_common_stub
 
 ; 12: Stack Fault Exception (with an error code)
 isr12:
-    cli
     push byte 12
     jmp isr_common_stub
 
 ; 13: General Protection Fault Exception (with an error code)
 isr13:
-    cli
     push byte 13
     jmp isr_common_stub
 
 ; 14: Page Fault Exception (with an error code)
 isr14:
-    cli
     push byte 14
     jmp isr_common_stub
 
 ; 15: Reserved Exception
 isr15:
-    cli
-
     push byte 0
     push byte 15
 
@@ -232,22 +206,18 @@ isr15:
 
 ; 16: Floating Point Exception
 isr16:
-    cli
     push byte 0
     push byte 16
     jmp isr_common_stub
 
 ; 17: Alignment Check Exception
 isr17:
-    cli
     push byte 0
     push byte 17
     jmp isr_common_stub
 
 ; 18: Machine Check Exception
 isr18:
-    cli
-
     push byte 0
     push byte 18
 
@@ -255,8 +225,6 @@ isr18:
 
 ; 19: Reserved
 isr19:
-    cli
-    
     push byte 0
     push byte 19
 
@@ -264,8 +232,6 @@ isr19:
 
 ; 20: Reserved
 isr20:
-    cli
-
     push byte 0
     push byte 20
 
@@ -273,8 +239,6 @@ isr20:
 
 ; 21: Reserved
 isr21:
-    cli
-
     push byte 0
     push byte 21
 
@@ -282,8 +246,6 @@ isr21:
 
 ; 22: Reserved
 isr22:
-    cli
-
     push byte 0
     push byte 22
 
@@ -291,8 +253,6 @@ isr22:
 
 ; 23: Reserved
 isr23:
-    cli
-
     push byte 0
     push byte 23
 
@@ -300,8 +260,6 @@ isr23:
 
 ; 24: Reserved
 isr24:
-    cli
-
     push byte 0
     push byte 24
 
@@ -309,8 +267,6 @@ isr24:
 
 ; 25: Reserved
 isr25:
-    cli
-
     push byte 0
     push byte 25
 
@@ -318,8 +274,6 @@ isr25:
 
 ; 26: Reserved
 isr26:
-    cli
-
     push byte 0
     push byte 26
 
@@ -327,8 +281,6 @@ isr26:
 
 ; 27: Reserved
 isr27:
-    cli
-
     push byte 0
     push byte 27
 
@@ -336,8 +288,6 @@ isr27:
 
 ; 28: Reserved
 isr28:
-    cli
-
     push byte 0
     push byte 28
 
@@ -345,8 +295,6 @@ isr28:
 
 ; 29: Reserved
 isr29:
-    cli
-
     push byte 0
     push byte 29
 
@@ -354,8 +302,6 @@ isr29:
 
 ; 30: Reserved
 isr30:
-    cli
-
     push byte 0
     push byte 30
 
@@ -363,8 +309,6 @@ isr30:
 
 ; 31: Reserved
 isr31:
-    cli
-
     push byte 0
     push byte 31
     
@@ -372,97 +316,97 @@ isr31:
 
 ; IRQ handlers
 irq0:
-	cli
 	push byte 0
 	push byte 32
+
 	jmp irq_common_stub
 
 irq1:
-	cli
 	push byte 1
 	push byte 33
+
 	jmp irq_common_stub
 
 irq2:
-	cli
 	push byte 2
 	push byte 34
+
 	jmp irq_common_stub
 
 irq3:
-	cli
 	push byte 3
 	push byte 35
+
 	jmp irq_common_stub
 
 irq4:
-	cli
 	push byte 4
 	push byte 36
+
 	jmp irq_common_stub
 
 irq5:
-	cli
 	push byte 5
 	push byte 37
+
 	jmp irq_common_stub
 
 irq6:
-	cli
 	push byte 6
 	push byte 38
+
 	jmp irq_common_stub
 
 irq7:
-	cli
 	push byte 7
 	push byte 39
+
 	jmp irq_common_stub
 
 irq8:
-	cli
 	push byte 8
 	push byte 40
+
 	jmp irq_common_stub
 
 irq9:
-	cli
 	push byte 9
 	push byte 41
+
 	jmp irq_common_stub
 
 irq10:
-	cli
 	push byte 10
 	push byte 42
+
 	jmp irq_common_stub
 
 irq11:
-	cli
 	push byte 11
 	push byte 43
+
 	jmp irq_common_stub
 
 irq12:
-	cli
 	push byte 12
 	push byte 44
+
 	jmp irq_common_stub
 
 irq13:
-	cli
 	push byte 13
 	push byte 45
+
 	jmp irq_common_stub
 
 irq14:
-	cli
 	push byte 14
 	push byte 46
+
 	jmp irq_common_stub
 
 irq15:
-	cli
 	push byte 15
 	push byte 47
+
 	jmp irq_common_stub
