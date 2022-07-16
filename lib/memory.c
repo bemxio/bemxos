@@ -1,10 +1,13 @@
 #include "memory.h"
 
 void *memcpy(void * restrict s1, void * restrict s2, size_t n) {
-    for (int i = 0; i < n; i++) {
-        *(s1 + i) = *(s2 + i);
-    }
+    char *destination = s1;
+    const char *source = s2;
 
+    while (n--) {
+        *destination++ = *source++;
+    }
+    
     return s1;
 }
 
