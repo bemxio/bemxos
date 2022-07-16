@@ -43,12 +43,10 @@ static uint16_t const __vitaut_str100p[100] = {
     0x3038, 0x3138, 0x3238, 0x3338, 0x3438, 0x3538, 0x3638, 0x3738, 0x3838, 0x3938,
     0x3039, 0x3139, 0x3239, 0x3339, 0x3439, 0x3539, 0x3639, 0x3739, 0x3839, 0x3939, };
 
-char *__vitaut_itoa(char *buf, int32_t val)
-{
+char *__vitaut_itoa(char *buf, int32_t val) {
     uint32_t comp_val = val;
     bool negative = false;
-    if (val < 0)
-    {
+    if (val < 0) {
         comp_val = -1 * val;
         negative = true;
     }
@@ -56,8 +54,7 @@ char *__vitaut_itoa(char *buf, int32_t val)
     char *p = buf + 11;
     *p = '\0';
 
-    while (comp_val >= 100)
-    {
+    while (comp_val >= 100) {
         const uint32_t old = comp_val;
         p -= 2;
         comp_val /= 100;
@@ -68,16 +65,14 @@ char *__vitaut_itoa(char *buf, int32_t val)
     memcpy(p, &__vitaut_str100p[comp_val], sizeof(uint16_t));
 
     char *ret = &p[comp_val < 10];
-    if (negative)
-    {
+    if (negative) {
         --ret;
         *ret = '-';
     }
     return ret;
 }
 
-char *itoa(char *buf, int32_t val)
-{
+char *itoa(char *buf, int32_t val) {
     return __vitaut_iota(buf, val);
 }
 
