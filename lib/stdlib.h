@@ -20,7 +20,7 @@ int atoi(const char *nptr);
 long int atol(const char *nptr);
 long long int atoll(const char *nptr);
 
-// NON-STANDARD FUNCTION (BemxOS extension)
+// NON-STANDARD FUNCTION (bemxOS extension)
 //
 // DESCRIPTION
 // The `itoa` function converts a signed 32-bit into a string pointed to by `buf`.
