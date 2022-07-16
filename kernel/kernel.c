@@ -10,8 +10,8 @@
 #define FUNC_AMOUNT 3
 #define PROMPT "$ "
 
-char **names[FUNC_AMOUNT] = {"help", "echo", "clear"};
-int (*addresses[FUNC_AMOUNT])(struct tokenized_string *) = {&help, &echo, &clear};
+char *names[FUNC_AMOUNT] = {"help", "echo", "clear"};
+void (*addresses[FUNC_AMOUNT])(struct tokenized_string *) = {&help, &echo, &clear};
 
 void command_error(char *exception) {
     kprint("error: ");

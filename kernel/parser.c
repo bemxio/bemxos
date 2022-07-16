@@ -1,4 +1,4 @@
-#include "../lib/memory.h"
+#include "../lib/stdlib.h"
 #include "../lib/string.h"
 #include "parser.h"
 

@@ -1,7 +1,26 @@
 #include "string.h"
 
+void *memcpy(void * restrict s1, void * restrict s2, size_t n) {
+    char *destination = s1;
+    const char *source = s2;
+
+    while (n--) {
+        *destination++ = *source++;
+    }
+    
+    return s1;
+}
+
+void *memset(void *s, int c, size_t n) {
+    for (uint8_t *t = (uint8_t *)s; n != 0; n--) {
+        *t++ = c;
+    }
+
+    return s;
+}
+
 size_t strlen(const char *s) {
-    int i = 0;
+    size_t i = 0;
 
     while (s[i] != '\0') {
         ++i;
@@ -17,16 +36,6 @@ char *strcpy(char * restrict s1, const char * restrict s2) {
     }
 
     return s1;
-}
-
-int atoi(const char *nptr) {
-    int number = 0;
-
-    for (int multiplier = 1, i = strlen(nptr) - 1; i >= 0; multiplier *= 10, i--) {
-        number += (nptr[i] - 48) * multiplier; // 48 is the ASCII code for '0'
-    }
-
-    return number;
 }
 
 int strcmp(const char *s1, const char *s2) {
