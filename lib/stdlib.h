@@ -20,8 +20,18 @@ int atoi(const char *nptr);
 long int atol(const char *nptr);
 long long int atoll(const char *nptr);
 
-// TODO: rewrite `itoa()` to not use `strrev()`
-void itoa(int value, char string[]);
+// NON-STANDARD FUNCTION (bemxOS extension)
+//
+// DESCRIPTION
+// The `itoa` function converts a signed 32-bit into a string pointed to by `buf`.
+// A `char` buffer of at least size 12 must be passed to `itoa`, otherwise its
+// behavior is undefined.
+//
+// RETURNS
+// The `itoa` function returns a pointer to the beginning of the new numerical string.
+// If the returned `char *` is not used in place of the passed `char` buffer, its
+// behavior is undefined.
+char *itoa(int32_t val, char *buf);
 
 // ISO/IEC 9899:TC3 (C99) - 7.21.6.1
 //
