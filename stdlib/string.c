@@ -54,6 +54,7 @@ char* strcpy(char *to, const char *from) {
 }
 
 // my AWESOME and COOL functions (very cool and awesome)
+// (just kidding they are SHITTY i HATE them i will kill myself rn)
 bool chrinstr(char character, char *string) {
     for (int i = 0; i < strlen(string); i++) {
         if (string[i] == character) {
@@ -72,4 +73,31 @@ int strint(char *string) {
     }
 
     return number;
+}
+
+bool strcmp(char *first, char *second) {
+    if (strlen(first) != strlen(second)) {
+        return false;
+    }
+
+    int length = strlen(first) + 1; // it's gonna check the null char as well so we gotta do +1
+    int count = 0;
+
+    for (int i = 0; i < length; i++) {
+        if (first[i] == second[i]) {
+            count++;
+        }
+    }
+
+    return count == length;
+}
+
+int findsubstr(char **source, char *substring, size_t length) {
+    for (int i = 0; i < length; i++) {
+        if (strcmp(source[i], substring)) {
+            return i;
+        }
+    }
+
+    return -1;
 }

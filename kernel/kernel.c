@@ -1,32 +1,47 @@
 #include "../drivers/screen.h"
+#include "../drivers/keyboard.h"
+
+#include "../stdlib/string.h"
 #include "../cpu/isr.h"
+
+#include "commands.h"
 #include "parser.h"
 
+#define PROMPT "$ "
 
-void text_mode() {
-    isr_install();
-    irq_install();
+char **names[2] = {"help", "echo"};
+int (*addresses[2])(struct tokenized_string *) = {&help, &echo};
 
-    kclear();
-    
-    kprintln("\nbemxOS v0.1.0 (very early beta tester alpha verison!!!)");
-    kprintln("for now, this is only a text editor with no option to save lmao");
-    kprintln("but still, hope you have fun :3\n");
-
-    init_keyboard();
+void command_error(char *exception) {
+    kprint("error: ");
+    kprintln(exception);
 }
 
-void parser_test() {
-    kclear();
+void input_callback(char *buffer) {
+    struct tokenized_string *tokens = tokenize_string(buffer);
+    char *name = tokens->indices[0]; // the command name
 
-    struct tokenized_string *ts = tokenize_string("this is \"a string\" in quotes");
+    int index = findsubstr(names, name, 2);
 
-    for (char **it = ts->indices; it < ts->indices + ts->size; ++it) {
-        kprintln(*it);
+    if (index == -1) { // command name not found
+        command_error("command not found");
+    } else {
+        (*addresses[index])(tokens);
     }
+
+    kprint(PROMPT);
 }
 
 void kernel_main() {
-    text_mode();
-    //parser_test();
+    kclear();
+
+    kprintln("\nbemxOS v0.2.0 (very early beta tester alpha verison!!!)");
+    kprintln("type 'help' to check all of the commands :)\n");
+
+    kprint(PROMPT);
+    
+    isr_install();
+    irq_install();
+
+    init_keyboard();
 }

@@ -1,3 +1,5 @@
+#include "../kernel/kernel.h"
+
 #include "../cpu/ports.h"
 #include "../cpu/isr.h"
 
@@ -6,6 +8,69 @@
 
 #include "keyboard.h"
 #include "screen.h"
+
+// bindings for scancodes
+char *bindings[] = {
+    "ERROR",
+    "ESC",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "-",
+    "=",
+    "BACKSPACE",
+    "TAB",
+    "Q",
+    "W",
+    "E",
+    "R",
+    "T",
+    "Y",
+    "U",
+    "I",
+    "O",
+    "P",
+    "[",
+    "]",
+    "\n",
+    "LCTRL",
+    "A",
+    "S",
+    "D",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    ";",
+    "'",
+    "`",
+    "LSHIFT",
+    "\\",
+    "Z",
+    "X",
+    "C",
+    "V",
+    "B",
+    "N",
+    "M",
+    ",",
+    ".",
+    "/",
+    "RSHIFT",
+    "PRTSC",
+    "ALT",
+    " "
+};
+char *capitalizable = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 bool capitalized = false;
 char buffer[64] = {};
@@ -63,6 +128,16 @@ void process_key(uint8_t code, bool state) {
         case 54: // shift keys
             capitalized = !capitalized;
             break;
+        
+        case 28: // enter key
+            if (state) {
+                break;
+            }
+            
+            kprint("\n");
+
+            input_callback(buffer);
+            buffer[0] = '\0';
         
         case 14: // backspace
             if (state || strlen(buffer) == 0) { // key up or the buffer is empty
