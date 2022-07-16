@@ -55,16 +55,6 @@ char* strcpy(char *to, const char *from) {
 
 // my AWESOME and COOL functions (very cool and awesome)
 // (just kidding they are SHITTY i HATE them i will kill myself rn)
-bool chrinstr(char character, char *string) {
-    for (int i = 0; i < strlen(string); i++) {
-        if (string[i] == character) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 int strint(char *string) {
     int number = 0;
 

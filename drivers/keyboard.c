@@ -11,66 +11,21 @@
 
 // bindings for scancodes
 char *bindings[] = {
-    "ERROR",
-    "ESC",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "0",
-    "-",
-    "=",
-    "BACKSPACE",
-    "TAB",
-    "Q",
-    "W",
-    "E",
-    "R",
-    "T",
-    "Y",
-    "U",
-    "I",
-    "O",
-    "P",
-    "[",
-    "]",
-    "\n",
-    "LCTRL",
-    "A",
-    "S",
-    "D",
-    "F",
-    "G",
-    "H",
-    "J",
-    "K",
-    "L",
-    ";",
-    "'",
-    "`",
-    "LSHIFT",
-    "\\",
-    "Z",
-    "X",
-    "C",
-    "V",
-    "B",
-    "N",
-    "M",
-    ",",
-    ".",
-    "/",
-    "RSHIFT",
-    "PRTSC",
-    "ALT",
-    " "
+    "ERROR", "ESC", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", 
+    "-", "=", "BACKSPACE", "\t", "q", "w", "e", "r", "t", "y", "u",
+    "i", "o", "p", "[", "]", "ENTER", "LCTRL", "a", "s", "d", "f",
+    "g", "h", "j", "k", "l", ";", "'", "`", "LSHIFT", "\\", "z",
+    "x", "c", "v", "b", "n", "m", ",", ".", "/", "RSHIFT", "PRTSC",
+    "ALT", " "
 };
-char *capitalizable = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+char *alt_bindings[] = {
+    "ERROR", "ESC", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", 
+    "_", "+", "BACKSPACE", "\t", "Q", "W", "E", "R", "T", "Y", "U",
+    "I", "O", "P", "[", "]", "ENTER", "LCTRL", "A", "S", "D", "F",
+    "G", "H", "J", "K", "L", ":", "\"", "~", "LSHIFT", "|", "Z",
+    "X", "C", "V", "B", "N", "M", "<", ">", "?", "RSHIFT", "PRTSC",
+    "ALT", " "
+};
 
 bool capitalized = false;
 char buffer[64] = {};
@@ -109,8 +64,6 @@ void init_keyboard() {
     register_interrupt_handler(IRQ1, keyboard_callback); 
     //register_interrupt_handler(IRQ1, test_keyboard_callback);
 }
-
-void handle_input(); // TODO: handle input
 
 void process_key(uint8_t code, bool state) {
     int length;
@@ -160,10 +113,10 @@ void process_key(uint8_t code, bool state) {
                 break;
             }
 
-            key = bindings[code][0];
-
-            if (!capitalized && chrinstr(key, capitalizable)) {
-                key += 32;
+            if (!capitalized) {
+                key = bindings[code][0];
+            } else {
+                key = alt_bindings[code][0];
             }
 
             kprint_char(key, -1, -1, WHITE_ON_BLACK);
