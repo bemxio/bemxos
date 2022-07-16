@@ -21,9 +21,14 @@ void command_error(char *exception) {
 void input_callback(char *buffer) {
     struct tokenized_string *tokens = tokenize_string(buffer);
     char *name = tokens->indices[0]; // the command name
+    int index = -1;
 
-    int index = findsubstr(names, name, FUNC_AMOUNT);
-
+    if (strlen(name) == 0) { // nothing got typed in
+        return kprint(PROMPT);
+    } else {
+        index = findsubstr(names, name, FUNC_AMOUNT);
+    }
+    
     if (index == -1) { // command name not found
         command_error("command not found");
     } else {
