@@ -3,7 +3,7 @@
 #include "../cpu/ports.h"
 #include "../cpu/isr.h"
 
-#include "../stdlib/string.h"
+#include "../lib/string.h"
 #include <stdbool.h>
 
 #include "keyboard.h"

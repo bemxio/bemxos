@@ -1,5 +1,5 @@
-#include "../stdlib/memory.h"
-#include "../stdlib/string.h"
+#include "../lib/memory.h"
+#include "../lib/string.h"
 #include "parser.h"
 
 struct tokenized_string *tokenize_string(const char *source_str) {

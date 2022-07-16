@@ -1,5 +1,5 @@
 #include "../cpu/ports.h"
-#include "../stdlib/memory.h"
+#include "../lib/memory.h"
 #include "screen.h"
 
 // cursor offset stuff

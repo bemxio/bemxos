@@ -1,7 +1,7 @@
 #include "../drivers/screen.h"
 #include "../drivers/keyboard.h"
 
-#include "../stdlib/string.h"
+#include "../lib/string.h"
 #include "../cpu/isr.h"
 
 #include "commands.h"

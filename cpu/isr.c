@@ -1,5 +1,5 @@
 #include "../drivers/screen.h"
-#include "../stdlib/string.h"
+#include "../lib/string.h"
 
 #include "ports.h"
 #include "isr.h"
