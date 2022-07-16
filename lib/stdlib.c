@@ -1,6 +1,8 @@
 #include "string.h"
 #include "stdlib.h"
 
+#include <stdbool.h>
+
 int atoi(const char *nptr) {
     int number = 0;
 
@@ -47,6 +49,7 @@ static uint16_t const __vitaut_str100p[100] = {
 char *__vitaut_itoa(int32_t val, char *buf) {
     uint32_t comp_val = val;
     bool negative = false;
+
     if (val < 0) {
         comp_val = -1 * val;
         negative = true;
@@ -57,6 +60,7 @@ char *__vitaut_itoa(int32_t val, char *buf) {
 
     while (comp_val >= 100) {
         const uint32_t old = comp_val;
+
         p -= 2;
         comp_val /= 100;
         memcpy(p, &__vitaut_str100p[old - (comp_val * 100)], sizeof(uint16_t));
@@ -66,15 +70,17 @@ char *__vitaut_itoa(int32_t val, char *buf) {
     memcpy(p, &__vitaut_str100p[comp_val], sizeof(uint16_t));
 
     char *ret = &p[comp_val < 10];
+
     if (negative) {
         --ret;
         *ret = '-';
     }
+
     return ret;
 }
 
 char *itoa(int32_t val, char *buf) {
-    return __vitaut_iota(val, buf);
+    return __vitaut_itoa(val, buf);
 }
 
 // this should be computed at link time, but a hardcoded value is fine for now
