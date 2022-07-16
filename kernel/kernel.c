@@ -48,6 +48,4 @@ void kernel_main() {
     
     isr_install();
     irq_install();
-
-    init_keyboard();
 }

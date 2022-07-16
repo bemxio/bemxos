@@ -1,3 +1,4 @@
+#include "../drivers/keyboard.h"
 #include "../drivers/screen.h"
 #include "../lib/string.h"
 
@@ -75,7 +76,7 @@ void isr_install() {
     set_idt(); // load with ASM
 }
 
-/* To print the message which defines every exception */
+// all of the exception messages
 char *exceptions[] = {
     "Division By Zero",
     "Debug",
@@ -120,7 +121,9 @@ void isr_handler(registers_t registers) {
 
     kprint("error: received interrupt: ");
     
-    itoa(registers.interrupt, code);
+    //itoa(registers.interrupt, code);
+    code[0] = '\0';
+    
     kprint(code);
     kprint(" ");
 

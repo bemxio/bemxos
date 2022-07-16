@@ -30,41 +30,6 @@ char *alt_bindings[] = {
 bool capitalized = false;
 char buffer[64] = {};
 
-static void keyboard_callback(registers_t registers) {
-    uint8_t code = port_byte_in(0x60); // the PIC leaves us the scancode in port 0x60
-
-    if (code >= 128) { // 'keyup' event corresponds to the 'keydown' + 0x80 
-        process_key(code - 128, true);
-    } else {
-        process_key(code, false);
-    }
-}
-
-/*
-static void test_keyboard_callback(registers_t registers) {
-    uint8_t code = port_byte_in(0x60);
-    
-    if (code >= 128) {
-        code -= 128;
-    }
-
-    for (int i = 7; i >= 0; i--) {
-        if (code & (1 << i)) {
-            kprint("1");
-        } else {
-            kprint("0");
-        }
-    }
-
-    kprint("\n");
-}
-*/
-
-void init_keyboard() {
-    register_interrupt_handler(IRQ1, keyboard_callback); 
-    //register_interrupt_handler(IRQ1, test_keyboard_callback);
-}
-
 void process_key(uint8_t code, bool state) {
     int length;
     char key;
@@ -131,4 +96,39 @@ void process_key(uint8_t code, bool state) {
 
             break;
     }
+}
+
+static void keyboard_callback(registers_t registers) {
+    uint8_t code = port_byte_in(0x60); // the PIC leaves us the scancode in port 0x60
+
+    if (code >= 128) { // 'keyup' event corresponds to the 'keydown' + 0x80 
+        process_key(code - 128, true);
+    } else {
+        process_key(code, false);
+    }
+}
+
+/*
+static void test_keyboard_callback(registers_t registers) {
+    uint8_t code = port_byte_in(0x60);
+    
+    if (code >= 128) {
+        code -= 128;
+    }
+
+    for (int i = 7; i >= 0; i--) {
+        if (code & (1 << i)) {
+            kprint("1");
+        } else {
+            kprint("0");
+        }
+    }
+
+    kprint("\n");
+}
+*/
+
+void init_keyboard() {
+    register_interrupt_handler(IRQ1, keyboard_callback); 
+    //register_interrupt_handler(IRQ1, test_keyboard_callback);
 }
