@@ -31,7 +31,7 @@ long long int atoll(const char *nptr);
 // The `itoa` function returns a pointer to the beginning of the new numerical string.
 // If the returned `char *` is not used in place of the passed `char` buffer, its
 // behavior is undefined.
-char *itoa(char *buf, int32_t val);
+char *itoa(int32_t val, char *buf);
 
 // ISO/IEC 9899:TC3 (C99) - 7.21.6.1
 //
