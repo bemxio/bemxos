@@ -31,4 +31,4 @@ debug: bemxOS.bin kernel.elf
 
 clean:
 	rm -rf *.bin *.o *.elf
-	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o cpu/*.o stdlib/*.o
+	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o cpu/*.o lib/*.o
