@@ -11,8 +11,8 @@ int atoi(const char *nptr) {
     return number;
 }
 
-long int atol(const char *nptr) {
-    long int number = 0;
+int32_t atol(const char *nptr) {
+    int32_t number = 0;
 
     for (int multiplier = 1, i = strlen(nptr) - 1; i >= 0; multiplier *= 10, i--) {
         number += (nptr[i] - 48) * multiplier; // 48 is the ASCII code for '0'
@@ -21,8 +21,8 @@ long int atol(const char *nptr) {
     return number;
 }
 
-long long int atoll(const char *nptr) {
-    long long int number = 0;
+int64_t atoll(const char *nptr) {
+    int64_t number = 0;
 
     for (int multiplier = 1, i = strlen(nptr) - 1; i >= 0; multiplier *= 10, i--) {
         number += (nptr[i] - 48) * multiplier; // 48 is the ASCII code for '0'

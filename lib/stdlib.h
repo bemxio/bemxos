@@ -17,8 +17,8 @@
 // RETURNS
 // The `atoi`, `atol`, and `atoll` functions return the converted value.
 int atoi(const char *nptr);
-long int atol(const char *nptr);
-long long int atoll(const char *nptr);
+int32_t atol(const char *nptr);
+int64_t atoll(const char *nptr);
 
 // NON-STANDARD FUNCTION (bemxOS extension)
 //
