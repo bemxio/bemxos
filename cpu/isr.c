@@ -121,10 +121,9 @@ void isr_handler(registers_t registers) {
 
     kprint("error: received interrupt: ");
     
-    //itoa(registers.interrupt, code);
-    code[0] = '\0';
-    
+    itoa(registers.interrupt, code);
     kprint(code);
+    
     kprint(" ");
 
     kprintln(exception);
