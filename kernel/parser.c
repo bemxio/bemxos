@@ -3,7 +3,7 @@
 #include "parser.h"
 
 struct tokenized_string *tokenize_string(const char *source_str) {
-    char *str = (char *)malloc(strlen(source_str) + 1, 1, NULL);
+    char *str = (char *)malloc(strlen(source_str) + 1);
     
     strcpy(str, source_str);
 
@@ -36,7 +36,7 @@ struct tokenized_string *tokenize_string(const char *source_str) {
         }
     }
 
-    char **indices = (char **)malloc(sizeof(*indices) * indices_arraysize, 1, NULL);
+    char **indices = (char **)malloc(sizeof(*indices) * indices_arraysize);
     size_t idx = 0;
     indices[idx++] = str;
 
@@ -58,7 +58,7 @@ struct tokenized_string *tokenize_string(const char *source_str) {
         indices[0] += 1;
     }
 
-    struct tokenized_string *ts = (struct tokenized_string *)malloc(sizeof(*ts), 1, NULL);
+    struct tokenized_string *ts = (struct tokenized_string *)malloc(sizeof(*ts));
 
     ts->str = str;
     ts->indices = indices;
