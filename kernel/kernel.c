@@ -41,7 +41,7 @@ void input_callback(char *buffer) {
 void kernel_main() {
     kclear();
 
-    kprintln("\nbemxOS v0.2.2 (very early beta tester alpha verison!!!)");
+    kprintln("\nbemxOS v0.2.3 (very early beta tester alpha verison!!!)");
     kprintln("type 'help' to check all of the commands :)\n");
 
     kprint(PROMPT);
