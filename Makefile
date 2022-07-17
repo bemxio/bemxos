@@ -19,6 +19,10 @@ debug: bemxOS.bin kernel.elf
 	"${QEMU_PATH}/qemu-system-i386.exe" -s -fda bemxOS.bin &
 	"${GDB_PATH}" -ex "target remote localhost:1234" -ex "symbol-file kernel.elf"
 
+floppy: bemxOS.bin
+	cp bemxOS.bin image.img
+	truncate -s 1440K image.img
+
 # generic rules for wildcards
 %.o: %.c ${HEADERS}
 	"${CC_PATH}/i386-elf-gcc" -g -ffreestanding -c $< -o $@
@@ -30,5 +34,5 @@ debug: bemxOS.bin kernel.elf
 	nasm $< -f bin -o $@
 
 clean:
-	rm -rf *.bin *.o *.elf
+	rm -rf *.bin *.o *.elf *.img
 	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o cpu/*.o lib/*.o
