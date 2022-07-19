@@ -28,7 +28,10 @@ load_kernel:
 
     mov bx, KERNEL_OFFSET ; read from disk and store in 0x1000
     mov dh, 32 ; number of sectors to read (make sure to expand it when the kernel code gets big)
-    mov dl, [BOOT_DRIVE]
+    
+    ; i commented out this line of code since the BIOS will automatically provide a boot drive
+    ; number stored in 'dl', so there's no need to push a pre-defined one in it
+    ; mov dl, [BOOT_DRIVE]
 
     call disk_load
     ret
@@ -46,7 +49,7 @@ MSG_REAL_MODE db "Started in 16-bit real mode", 0
 MSG_PROT_MODE db "Loaded 32-bit protected mode", 0
 MSG_LOAD_KERNEL db "Loading kernel into memory...", 0
 
-BOOT_DRIVE db 0
+; BOOT_DRIVE db 0
 
 ; padding & magic number
 times 510 - ($ - $$) db 0
